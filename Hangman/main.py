@@ -11,18 +11,18 @@ lives = 6
 game_over = False
 display = []
 
-
-print(f"Wlcome to:\n{logo}\n")
+print(f"Welcome to:\n{logo}\n")
 
 #Generat a list of spaces to the length of the chosen word.
 for _ in range(word_len):
     display += "_"
-
+#Turn the list into a string
+print(f"{''.join(display).upper()}")
 #Loop the game until all letters guessed or all health lost.
 while not game_over:
     guess = input("Guess a letter: ").lower()
     if guess in display:
-      print(f"You have already guessed {guess.upper()}!, try another letter")
+        print(f"You have already guessed {guess.upper()}!, try another letter")
 #The range fonction will generate a position number for each letter in the word.
 #That number will be used as an index to locate the letter in the word.
 #The index will also be used to replce the space the corresponding "_" place.
@@ -30,7 +30,6 @@ while not game_over:
         letter = chosen_word[position]
         if letter == guess:
             display[position] = letter
-#Turn the list into a string
     print(f"{' '.join(display).upper()}")
 #Penalty when guessing the wrong letter
 #Ending the game if one of two conditions met
@@ -38,8 +37,8 @@ while not game_over:
         print(f"Oh no, {guess.upper()} is not correct, you lost some health!")
         lives-=1
         if lives == 0:
-          print("You lose >:")
-          game_over = True
+            print("You lose >:")
+            game_over = True
     elif "_" not in display:
         game_over = True
         print("You win! :>")
